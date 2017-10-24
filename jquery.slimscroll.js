@@ -395,7 +395,12 @@
                     }
 
                     // calculate actual scroll amount
-                    percentScroll = parseInt(bar.css('top')) / (me.outerHeight() - bar.outerHeight());
+                    percentScroll = (parseInt(bar.css('top')) - parseInt(o.space)) / (me.outerHeight() - bar.outerHeight() - (3 * parseInt(o.space)));
+                    if (percentScroll > 1)
+                    {
+                        percentScroll = 1;
+                    }
+
                     delta = percentScroll * (me[0].scrollHeight - me.outerHeight());
 
                     if (isJump)
@@ -470,7 +475,7 @@
                     lastScroll = percentScroll;
 
                     // show only when required
-                    if (barHeight >= me.outerHeight())
+                    if (barHeight >= me.outerHeight() - (2 * parseInt(o.space)))
                     {
                         //allow window scroll
                         releaseScroll = true;
