@@ -313,7 +313,7 @@
                 if (o.start === 'bottom')
                 {
                     // scroll content to bottom
-                    bar.css({top: me.outerHeight() - bar.outerHeight()});
+                    bar.css({top: me.outerHeight() - bar.outerHeight() - parseInt(o.space)}); // add "space"
                     scrollContent(0, true);
                 }
                 else if (o.start !== 'top')
@@ -440,7 +440,7 @@
                     bar.css({height: barHeight + 'px'});
 
                     // hide scrollbar if content is not long enough
-                    var display = barHeight == me.outerHeight() ? 'none' : 'block';
+                    var display = barHeight == me.outerHeight() - (2 * parseInt(o.space)) ? 'none' : 'block'; // added "space" check
                     bar.css({display: display});
                 }
 
